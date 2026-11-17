@@ -357,9 +357,45 @@
         <div class="summary-row total-row"><span>Итого к оплате</span><strong id="modalAmount">1 390 ₽</strong></div>
       </div>
       <p id="checkoutNote" class="modal-note">
-        Заказ сформирован без сохранения персональных данных на сайте. После подключения боевого платёжного шлюза кнопка ниже будет сразу открывать оплату.
+        Заказ сформирован без сохранения персональных данных на сайте. После оплаты через ЮKassa (СБП или карта) страница автоматически вернётся на сайт и покажет готовый лицензионный ключ.
       </p>
-      <a id="checkoutActionLink" href="#" target="_blank" rel="noopener" class="btn-modal-primary">Перейти к оплате / Получить ключ</a>
+      <a id="checkoutActionLink" href="#" target="_self" class="btn-modal-primary">Перейти к оплате в ЮKassa</a>
+      <a id="checkoutSupportLink" href="https://t.me/rfmpro_support_bot" target="_blank" rel="noopener" class="btn-outline-sm" style="display:flex;justify-content:center;width:100%;margin-top:10px;text-align:center;">Оплатить или задать вопрос в Telegram (@rfmpro_support_bot)</a>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Статус оплаты и выдача лицензионного ключа -->
+  <div id="orderStatusModal" class="modal-backdrop" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="orderStatusTitle">
+      <div class="modal-head">
+        <h3 id="orderStatusTitle">Статус оплаты и ключ активации</h3>
+        <button type="button" class="modal-close" data-close-modal="orderStatusModal" aria-label="Закрыть">✕</button>
+      </div>
+      <p id="orderStatusText" class="modal-note">
+        Проверяем статус оплаты в ЮKassa... Если сервер просыпается, это может занять до 30–50 секунд.
+      </p>
+      <div id="orderSummaryBox" class="summary-box" hidden>
+        <div class="summary-row"><span>Тариф</span><strong id="orderResultPlan">—</strong></div>
+        <div class="summary-row"><span>Device ID</span><code id="orderResultDevice">—</code></div>
+        <div class="summary-row"><span>Сумма</span><strong id="orderResultAmount">—</strong></div>
+      </div>
+      <div id="licenseKeyBox" hidden>
+        <p class="modal-note" style="margin-bottom:6px;color:#4ade80;font-weight:600;">
+          Оплата подтверждена! Ваш лицензионный ключ:
+        </p>
+        <code id="issuedLicenseKey" style="display:block;word-break:break-all;padding:12px;font-size:13px;margin-bottom:12px;border:1px solid rgba(99,102,241,0.45);"></code>
+        <button type="button" id="copyLicenseKeyBtn" class="btn-modal-primary">Скопировать ключ</button>
+        <p id="copyLicenseFeedback" class="modal-note" style="margin-top:8px;margin-bottom:0;color:#4ade80;" hidden>
+          Ключ скопирован в буфер обмена!
+        </p>
+        <ol class="modal-steps" style="margin-top:14px;margin-bottom:14px;">
+          <li>Откройте приложение <b>RFM Analytics</b> на вашем Android-смартфоне.</li>
+          <li>Перейдите в любой раздел <b>★ PRO</b> и нажмите <b>«Ввести лицензионный ключ»</b>.</li>
+          <li>Вставьте скопированный ключ и нажмите <b>«Активировать»</b>.</li>
+        </ol>
+      </div>
+      <a id="orderPayAgainLink" href="#" target="_self" class="btn-modal-primary" hidden>Завершить оплату в ЮKassa</a>
+      <a href="https://t.me/rfmpro_support_bot" target="_blank" rel="noopener" class="btn-outline-sm" style="display:flex;justify-content:center;width:100%;margin-top:10px;text-align:center;">Поддержка в Telegram (@rfmpro_support_bot)</a>
     </div>
   </div>
 

@@ -1,6 +1,9 @@
-// Точка подключения боевой платёжной ссылки или бэкенда кассы (Робокасса / ЮKassa / Т-Касса).
-// Когда касса будет одобрена, замените пустую строку на URL создания платежа или форму шлюза.
-const PAYMENT_GATEWAY_URL = "";
+// Бэкенд оплаты ЮKassa (ShopID 1533215) и автовыдачи ключей на Render (без хранения персональных данных).
+const BACKEND_BASE_URL = "https://rfmanalytics-bot.onrender.com";
+const PAYMENT_GATEWAY_URL = `${BACKEND_BASE_URL}/pay`;
+
+// Предварительно будим сервер Render при открытии сайта
+fetch(`${BACKEND_BASE_URL}/health`, { mode: "cors" }).catch(() => {});
 
 const tariffButtons = Array.from(document.querySelectorAll(".tariff-option"));
 const payMethodButtons = Array.from(document.querySelectorAll(".pay-option"));
@@ -131,25 +134,125 @@ orderForm.addEventListener("submit", (e) => {
 
   if (hasError) return;
 
-  if (PAYMENT_GATEWAY_URL) {
-    const query = new URLSearchParams({
-      plan: state.planId,
-      amount: String(state.price),
-      device: rawDevice,
-      method: state.method
-    });
-    window.location.href = `${PAYMENT_GATEWAY_URL}?${query.toString()}`;
-    return;
-  }
-
   document.getElementById("modalPlan").textContent = state.planTitle;
   document.getElementById("modalDevice").textContent = rawDevice;
   document.getElementById("modalMethod").textContent = state.methodLabel;
   document.getElementById("modalAmount").textContent = formatRub(state.price);
 
+  const payQuery = new URLSearchParams({
+    plan: state.planId,
+    device: rawDevice,
+    method: state.method
+  });
+  const actionLink = document.getElementById("checkoutActionLink");
+  actionLink.href = `${PAYMENT_GATEWAY_URL}?${payQuery.toString()}`;
+  actionLink.target = "_self";
+
   const supportMsg = encodeURIComponent(
     `Здравствуйте! Хочу оплатить RfmAnalytics PRO (${state.planTitle}, ${state.price} ₽) для устройства ${rawDevice}.`
   );
-  document.getElementById("checkoutActionLink").href = `https://t.me/rfmpro_support_bot?text=${supportMsg}`;
+  const supportLink = document.getElementById("checkoutSupportLink");
+  if (supportLink) {
+    supportLink.href = `https://t.me/rfmpro_support_bot?text=${supportMsg}`;
+  }
   openModal("checkoutModal");
 });
+
+// Проверка статуса оплаты и автовыдача лицензионного ключа при возврате с ЮKassa (?order=...)
+const orderToken = (urlParams.get("order") || "").trim();
+if (orderToken) {
+  const orderStatusTitle = document.getElementById("orderStatusTitle");
+  const orderStatusText = document.getElementById("orderStatusText");
+  const orderSummaryBox = document.getElementById("orderSummaryBox");
+  const licenseKeyBox = document.getElementById("licenseKeyBox");
+  const issuedLicenseKey = document.getElementById("issuedLicenseKey");
+  const copyBtn = document.getElementById("copyLicenseKeyBtn");
+  const copyFeedback = document.getElementById("copyLicenseFeedback");
+  const payAgainLink = document.getElementById("orderPayAgainLink");
+
+  openModal("orderStatusModal");
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const keyValue = issuedLicenseKey.textContent.trim();
+      if (!keyValue) return;
+      try {
+        await navigator.clipboard.writeText(keyValue);
+      } catch (_err) {
+        const ta = document.createElement("textarea");
+        ta.value = keyValue;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+      copyFeedback.hidden = false;
+    });
+  }
+
+  let pollAttempts = 0;
+  const maxPollAttempts = 40;
+
+  async function pollOrderStatus() {
+    pollAttempts += 1;
+    try {
+      const resp = await fetch(
+        `${BACKEND_BASE_URL}/api/order?order=${encodeURIComponent(orderToken)}`,
+        { mode: "cors", cache: "no-store" }
+      );
+      const data = await resp.json();
+
+      if (!resp.ok || !data.ok) {
+        orderStatusTitle.textContent = "Ошибка проверки заказа";
+        orderStatusText.textContent = data.error || "Не удалось получить статус платежа. Обратитесь в поддержку.";
+        return;
+      }
+
+      document.getElementById("orderResultPlan").textContent = data.plan_title || "—";
+      document.getElementById("orderResultDevice").textContent = data.device_id || "—";
+      document.getElementById("orderResultAmount").textContent = data.amount ? formatRub(data.amount) : "—";
+      orderSummaryBox.hidden = false;
+
+      if (data.status === "succeeded" && data.paid && data.license_key) {
+        orderStatusTitle.textContent = "Лицензионный ключ готов";
+        orderStatusText.textContent = "Сохраните или скопируйте ключ. При обновлении этой страницы ключ останется доступен.";
+        issuedLicenseKey.textContent = data.license_key;
+        licenseKeyBox.hidden = false;
+        payAgainLink.hidden = true;
+        return;
+      }
+
+      if (data.status === "canceled") {
+        orderStatusTitle.textContent = "Оплата не завершена";
+        orderStatusText.textContent = "Платёж был отменён или истёк срок оплаты. Вы можете оформить заказ заново на сайте.";
+        payAgainLink.hidden = true;
+        return;
+      }
+
+      orderStatusTitle.textContent = "Ожидаем подтверждение оплаты";
+      orderStatusText.textContent = "ЮKassa ещё обрабатывает платёж. Страница проверяет статус автоматически каждые 3 секунды...";
+      if (data.confirmation_url) {
+        payAgainLink.href = data.confirmation_url;
+        payAgainLink.hidden = false;
+      }
+
+      if (pollAttempts < maxPollAttempts) {
+        setTimeout(pollOrderStatus, 3000);
+      } else {
+        orderStatusText.textContent = "Платёж всё ещё в обработке. Обновите страницу через минуту или напишите в поддержку.";
+      }
+    } catch (_err) {
+      if (pollAttempts < maxPollAttempts) {
+        orderStatusText.textContent = "Сервер оплаты запускается или временно недоступен, повторяем проверку...";
+        setTimeout(pollOrderStatus, 3000);
+      } else {
+        orderStatusTitle.textContent = "Сервер оплаты не ответил";
+        orderStatusText.textContent = "Не удалось связаться с сервером проверки оплаты. Попробуйте обновить страницу или напишите в поддержку.";
+      }
+    }
+  }
+
+  pollOrderStatus();
+}
