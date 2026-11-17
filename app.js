@@ -150,6 +150,6 @@ orderForm.addEventListener("submit", (e) => {
   const supportMsg = encodeURIComponent(
     `Здравствуйте! Хочу оплатить RfmAnalytics PRO (${state.planTitle}, ${state.price} ₽) для устройства ${rawDevice}.`
   );
-  document.getElementById("checkoutActionLink").href = `https://t.me/MaXXXim321?text=${supportMsg}`;
+  document.getElementById("checkoutActionLink").href = `https://t.me/rfmpro_support_bot?text=${supportMsg}`;
   openModal("checkoutModal");
 });
