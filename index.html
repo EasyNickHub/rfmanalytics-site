@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RfmAnalytics PRO — Лицензия и активация аналитики ритейла</title>
+  <meta name="description" content="Официальная страница активации RfmAnalytics PRO. Мгновенная выдача лицензионного ключа для Android-приложения: RFM-анализ, прогноз оттока, автозаказ X/Y/Z и интеграция с кассами." />
+  <link rel="canonical" href="https://rfmpro.ru/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge">RFM</span>
+        <span class="brand-name">RfmAnalytics <span class="brand-pro">PRO</span></span>
+        <span class="brand-bolt" aria-hidden="true">⚡</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Навигация">
+        <a href="#features" class="nav-link">Функции</a>
+        <a href="#terms" class="nav-link">Возврат и доставка</a>
+        <a href="#requisites" class="nav-link">Реквизиты</a>
+        <a href="https://t.me/MaXXXim321" target="_blank" rel="noopener" class="btn-tg">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Поддержка
+        </a>
+        <a href="oferta.html" class="btn-outline-sm">Оферта</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero + Форма оплаты -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-heading">
+          <div class="hero-bg-word" aria-hidden="true">RFM PRO</div>
+          <div class="hero-kicker">
+            <span class="kicker-line"></span>
+            <span>LICENSE IN SECONDS</span>
+            <span class="kicker-line"></span>
+          </div>
+          <h1>Активация RfmAnalytics PRO</h1>
+          <p class="hero-subtitle">
+            Профессиональный модуль анализа продаж, прогноза оттока и автозаказа для магазинов на вашем смартфоне — без облачных подписок, сбора персональных данных и сторонних серверов.
+          </p>
+        </div>
+
+        <!-- Карточка заказа (без сбора персональных данных) -->
+        <form id="orderForm" class="order-card" novalidate>
+          <!-- Шаг 1 -->
+          <div class="step-block">
+            <div class="step-label">
+              <span class="step-num">1</span>
+              <span>ВЫБЕРИТЕ ТАРИФНЫЙ ПЛАН</span>
+            </div>
+
+            <div class="tariff-grid" role="radiogroup" aria-label="Тарифы RfmAnalytics PRO">
+              <button type="button" class="tariff-option" data-plan="pro_1m" data-price="299" data-days="30" data-title="1 месяц (30 дней)">
+                <div class="tariff-top">
+                  <span class="tariff-name">1 месяц</span>
+                  <span class="tariff-tag tag-muted">Базовый</span>
+                </div>
+                <div class="tariff-price">299 ₽</div>
+                <div class="tariff-meta">299 ₽/мес • 30 дней</div>
+              </button>
+
+              <button type="button" class="tariff-option" data-plan="pro_3m" data-price="790" data-days="90" data-title="3 месяца (90 дней)">
+                <div class="tariff-top">
+                  <span class="tariff-name">3 месяца</span>
+                  <span class="tariff-tag tag-save">Выгода 12%</span>
+                </div>
+                <div class="tariff-price">790 ₽</div>
+                <div class="tariff-meta">~263 ₽/мес • 90 дней</div>
+              </button>
+
+              <button type="button" class="tariff-option is-selected" data-plan="pro_6m" data-price="1390" data-days="180" data-title="6 месяцев (180 дней)">
+                <div class="tariff-top">
+                  <span class="tariff-name">6 месяцев</span>
+                  <span class="tariff-tag tag-hit">Хит • -22%</span>
+                </div>
+                <div class="tariff-price">1 390 ₽</div>
+                <div class="tariff-meta">~231 ₽/мес • Экономия &gt;400 ₽</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Шаг 2 -->
+          <div class="step-block">
+            <div class="step-label-row">
+              <div class="step-label">
+                <span class="step-num">2</span>
+                <span>DEVICE ID УСТРОЙСТВА <span class="req">*</span></span>
+              </div>
+              <button type="button" id="openDeviceHelp" class="help-link">Где найти Device ID?</button>
+            </div>
+            <p class="step-hint">
+              Технический анонимный код приложения (не является персональными данными). Откройте <b>RfmAnalytics</b> → нажмите на любой PRO-раздел → скопируйте ID вида <code>RFM-3C9E-8977</code>.
+            </p>
+            <input
+              type="text"
+              id="deviceIdInput"
+              class="text-input mono-input"
+              placeholder="RFM-3C9E-8977"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+            <div id="deviceIdError" class="field-error" hidden></div>
+          </div>
+
+          <!-- Шаг 3 -->
+          <div class="step-block">
+            <div class="step-label">
+              <span class="step-num">3</span>
+              <span>СПОСОБ ОПЛАТЫ</span>
+            </div>
+            <div class="pay-methods" role="radiogroup" aria-label="Способ оплаты">
+              <button type="button" class="pay-option is-selected" data-method="sbp">
+                <span class="pay-radio"></span>
+                <span>СБП (Система быстрых платежей)</span>
+              </button>
+              <button type="button" class="pay-option" data-method="card">
+                <span class="pay-radio"></span>
+                <span>Банковская карта РФ (Мир / Visa / Mastercard)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Согласие с офертой -->
+          <label class="consent-row">
+            <input type="checkbox" id="agreeCheckbox" checked />
+            <span>
+              Я ознакомлен(а) и принимаю условия
+              <a href="oferta.html">Публичной оферты</a>,
+              <a href="#terms">правил возврата</a> и
+              <a href="privacy.html">информации о конфиденциальности</a>.
+            </span>
+          </label>
+          <div id="agreeError" class="field-error" hidden></div>
+
+          <!-- Кнопка оплаты -->
+          <button type="submit" id="submitOrderBtn" class="btn-pay-main">
+            <span>ОПЛАТИТЬ И ПОЛУЧИТЬ КЛЮЧ</span>
+            <span class="btn-arrow">→</span>
+            <span id="submitPriceText">1 390 ₽</span>
+          </button>
+
+          <div class="instant-status">
+            <span class="dot-green" aria-hidden="true"></span>
+            <span>Мгновенная выдача лицензионного ключа сразу после подтверждения оплаты</span>
+          </div>
+
+          <!-- Полоса преимуществ внизу карточки -->
+          <div class="card-perks">
+            <div class="perk-item">
+              <span class="perk-icon">🔒</span>
+              <span>Без сбора персональных данных</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">⚡</span>
+              <span>Ключ выдаётся мгновенно</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">💳</span>
+              <span>Оплата СБП и картами РФ</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">💬</span>
+              <span>Поддержка 09:00–21:00 МСК</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Что входит в PRO -->
+    <section id="features" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">ВОЗМОЖНОСТИ МОДУЛЯ</span>
+          <h2>Что открывает лицензия RfmAnalytics PRO</h2>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-num">01</div>
+            <h3>Автосбор чеков с касс</h3>
+            <p>Подключение смарт-терминалов Эвотор (Сбер), aQsi (Т-Банк / Альфа-Касса), Контур.Маркет, ОФД, МойСклад API и облачных папок 1С через WorkManager.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">02</div>
+            <h3>Расчёт упущенной выручки</h3>
+            <p>Поиск постоянных клиентов в риске оттока по Z-оценке задержки визитов и оценка суммы недополученной выручки.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">03</div>
+            <h3>План автозаказа X/Y/Z</h3>
+            <p>Формирование списка закупки поставщикам по группам стабильности спроса и выявление неликвидного «мёртвого стока».</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">04</div>
+            <h3>Брендирование отчётов</h3>
+            <p>Добавление логотипа, печати, подписи и реквизитов вашей компании в экспортируемые PDF и многостраничные Excel (.xlsx) отчёты.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">05</div>
+            <h3>Синхронизация правил ИИ</h3>
+            <p>Обмен дообученной базой знаний автокатегоризации товаров (<code>.rfmrules</code>) между устройствами директора и товароведа.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">06</div>
+            <h3>Резервное копирование</h3>
+            <p>Локальное и облачное сохранение базы данных (<code>.rfmbackup</code>) с автоматической ротацией 5 последних копий.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">07</div>
+            <h3>CRM-экспорт клиентов</h3>
+            <p>Выгрузка сегментов и клиентов из зоны риска для запуска возвратных рассылок и персональных предложений.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-num">08</div>
+            <h3>Без лимитов на импорт</h3>
+            <p>Снятие ограничения бесплатной версии в 3 000 чеков в месяц — анализируйте историю продаж любого объёма.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Условия доставки, возврата и оплаты -->
+    <section id="terms" class="section-block">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">ПОРЯДОК ОКАЗАНИЯ УСЛУГ</span>
+          <h2>Оплата, выдача ключа и возврат средств</h2>
+        </div>
+
+        <div class="terms-grid">
+          <div class="term-card">
+            <h3>1. Порядок оплаты и доставки</h3>
+            <p>
+              Оплата производится в российских рублях (₽) на стороне защищённого платёжного шлюза банковской картой РФ или через СБП.
+              На данном сайте персональные данные не собираются и не хранятся. Лицензионный ключ формата <code>RFMPRO.&lt;DEVICE_ID&gt;.&lt;СРОК&gt;.&lt;ПОДПИСЬ&gt;</code> формируется и выдаётся <b>мгновенно</b> после подтверждения платежа.
+            </p>
+          </div>
+          <div class="term-card">
+            <h3>2. Условия возврата средств</h3>
+            <p>
+              Покупатель вправе запросить полный возврат денежных средств <b>до момента активации лицензионного ключа</b> в приложении RfmAnalytics.
+              После ввода и активации ключа в приложении цифровой продукт считается переданным и активированным, обязательства Исполнителя выполнены в полном объёме.
+            </p>
+          </div>
+          <div class="term-card">
+            <h3>3. Служба поддержки</h3>
+            <p>
+              По вопросам оплаты, подбора кассовой интеграции, активации ключа и возврата средств обращайтесь по контактам ниже.
+              Время работы поддержки: ежедневно с <b>09:00 до 21:00 (МСК)</b>, среднее время ответа — <b>10–30 минут</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал с реквизитами и документами -->
+  <footer id="requisites" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <span class="brand-badge">RFM</span>
+            <span class="brand-name">RfmAnalytics <span class="brand-pro">PRO</span></span>
+            <span class="brand-bolt" aria-hidden="true">⚡</span>
+          </div>
+          <p class="footer-slogan">БЫСТРАЯ ОФЛАЙН-АНАЛИТИКА ПРОДАЖ И КЛИЕНТСКОЙ БАЗЫ ДЛЯ РОЗНИЧНОГО БИЗНЕСА.</p>
+          <p class="footer-copy">© 2026 RfmAnalytics PRO. Все права защищены.</p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title">РЕКВИЗИТЫ ПРОДАВЦА</div>
+          <ul class="footer-list">
+            <li>Статус: <b>Самозанятый (НПД)</b></li>
+            <li>ФИО: <b>Землянухин Максим Сергеевич</b></li>
+            <li>ИНН: <code>363103868376</code></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title">КОНТАКТЫ</div>
+          <ul class="footer-list">
+            <li>Email: <a href="mailto:maximkrabik96@gmail.com">maximkrabik96@gmail.com</a></li>
+            <li>Телефон: <a href="tel:+79997223959">+7 999 722-39-59</a></li>
+            <li>Telegram: <a href="https://t.me/MaXXXim321" target="_blank" rel="noopener">@MaXXXim321</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title">ДОКУМЕНТЫ</div>
+          <ul class="footer-list">
+            <li><a href="oferta.html">Публичная оферта и возврат</a></li>
+            <li><a href="privacy.html">Конфиденциальность (без сбора ПДн)</a></li>
+            <li><a href="https://telegra.ph/Publichnaya-oferta-RfmAnalytics-PRO-11-14-2" target="_blank" rel="noopener">Копия оферты на Telegraph ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Липкая нижняя панель -->
+  <div id="stickyBar" class="sticky-bar" aria-hidden="true">
+    <div class="container sticky-inner">
+      <div class="sticky-info">
+        <strong id="stickyPrice">1 390 ₽</strong>
+        <span>• <span id="stickyPlan">6 месяцев</span> • Мгновенная выдача ключа</span>
+      </div>
+      <a href="#orderForm" class="btn-sticky-up">ОПЛАТИТЬ СЕЙЧАС ↑</a>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Где найти Device ID -->
+  <div id="deviceHelpModal" class="modal-backdrop" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="deviceHelpTitle">
+      <div class="modal-head">
+        <h3 id="deviceHelpTitle">Где найти Device ID устройства?</h3>
+        <button type="button" class="modal-close" data-close-modal="deviceHelpModal" aria-label="Закрыть">✕</button>
+      </div>
+      <ol class="modal-steps">
+        <li>Откройте приложение <b>RFM Analytics</b> на вашем Android-смартфоне.</li>
+        <li>Нажмите на любой раздел со значком <b>★ PRO</b> (например, «Упущенная выручка» или «Интеграции и кассы»).</li>
+        <li>Пролистайте окно до карточки <b>«Ваш ID устройства»</b> (выглядит как <code>RFM-3C9E-8977</code>) и нажмите кнопку <b>«Скопировать»</b>.</li>
+        <li>Вставьте скопированный код в поле <b>Device ID</b> на этой странице.</li>
+      </ol>
+      <button type="button" class="btn-modal-primary" data-close-modal="deviceHelpModal">Понятно</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно: Подтверждение / переход к оплате -->
+  <div id="checkoutModal" class="modal-backdrop" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <div class="modal-head">
+        <h3 id="checkoutTitle">Оформление заказа</h3>
+        <button type="button" class="modal-close" data-close-modal="checkoutModal" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="summary-box">
+        <div class="summary-row"><span>Продукт</span><strong>Лицензия RfmAnalytics PRO</strong></div>
+        <div class="summary-row"><span>Тариф</span><strong id="modalPlan">6 месяцев (180 дней)</strong></div>
+        <div class="summary-row"><span>Device ID</span><code id="modalDevice">RFM-XXXX-YYYY</code></div>
+        <div class="summary-row"><span>Способ оплаты</span><strong id="modalMethod">СБП</strong></div>
+        <div class="summary-row total-row"><span>Итого к оплате</span><strong id="modalAmount">1 390 ₽</strong></div>
+      </div>
+      <p id="checkoutNote" class="modal-note">
+        Заказ сформирован без сохранения персональных данных на сайте. После подключения боевого платёжного шлюза кнопка ниже будет сразу открывать оплату.
+      </p>
+      <a id="checkoutActionLink" href="#" target="_blank" rel="noopener" class="btn-modal-primary">Перейти к оплате / Получить ключ</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
