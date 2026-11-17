@@ -1,9 +1,8 @@
-// Бэкенд оплаты ЮKassa (ShopID 1533215) и автовыдачи ключей на Render (без хранения персональных данных).
-const BACKEND_BASE_URL = "https://rfmanalytics-bot.onrender.com";
-const PAYMENT_GATEWAY_URL = `${BACKEND_BASE_URL}/pay`;
+// Бэкенд оплаты ЮKassa (ShopID 1533215) и автовыдачи ключей на Yandex Cloud Functions (работает в РФ и с VPN).
+const BACKEND_BASE_URL = "https://functions.yandexcloud.net/d4epu0v4ct5u3ra03esg";
 
-// Предварительно будим сервер Render при открытии сайта
-fetch(`${BACKEND_BASE_URL}/health`, { mode: "cors" }).catch(() => {});
+// Предварительно прогреваем функцию при открытии сайта
+fetch(`${BACKEND_BASE_URL}?action=health`, { mode: "cors" }).catch(() => {});
 
 const tariffButtons = Array.from(document.querySelectorAll(".tariff-option"));
 const payMethodButtons = Array.from(document.querySelectorAll(".pay-option"));
@@ -140,12 +139,13 @@ orderForm.addEventListener("submit", (e) => {
   document.getElementById("modalAmount").textContent = formatRub(state.price);
 
   const payQuery = new URLSearchParams({
+    action: "pay",
     plan: state.planId,
     device: rawDevice,
     method: state.method
   });
   const actionLink = document.getElementById("checkoutActionLink");
-  actionLink.href = `${PAYMENT_GATEWAY_URL}?${payQuery.toString()}`;
+  actionLink.href = `${BACKEND_BASE_URL}?${payQuery.toString()}`;
   actionLink.target = "_self";
 
   const supportMsg = encodeURIComponent(
@@ -199,10 +199,15 @@ if (orderToken) {
     pollAttempts += 1;
     try {
       const resp = await fetch(
-        `${BACKEND_BASE_URL}/api/order?order=${encodeURIComponent(orderToken)}`,
+        `${BACKEND_BASE_URL}?action=order&order=${encodeURIComponent(orderToken)}`,
         { mode: "cors", cache: "no-store" }
       );
       const data = await resp.json();
+
+      if (resp.status === 404 && pollAttempts <= 3) {
+        setTimeout(pollOrderStatus, 2500);
+        return;
+      }
 
       if (!resp.ok || !data.ok) {
         orderStatusTitle.textContent = "Ошибка проверки заказа";
