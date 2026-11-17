@@ -218,6 +218,60 @@ a:hover {
   font-size: 15px;
 }
 
+.hero-cta-row {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  box-shadow: 0 10px 26px rgba(34, 197, 94, 0.28);
+  transition: transform 0.12s ease, opacity 0.15s ease;
+}
+
+.btn-download:hover {
+  opacity: 0.94;
+  transform: translateY(-1px);
+}
+
+.btn-download-lg {
+  width: 100%;
+  padding: 14px 22px;
+  font-size: 15px;
+}
+
+.btn-secondary-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-elevated);
+  color: var(--text) !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none !important;
+}
+
+.btn-secondary-hero:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
 /* Order Card */
 .order-card {
   max-width: 780px;
@@ -883,7 +937,85 @@ a:hover {
   font-size: 14px;
 }
 
+/* Download Card & FAQ */
+.download-card {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.download-info h2 {
+  margin: 4px 0 10px;
+  font-size: clamp(20px, 3vw, 26px);
+}
+
+.download-desc {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.download-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.download-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.download-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
 @media (max-width: 900px) {
+  .download-card {
+    grid-template-columns: 1fr;
+  }
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
