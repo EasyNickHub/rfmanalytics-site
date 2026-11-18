@@ -149,7 +149,7 @@ orderForm.addEventListener("submit", (e) => {
   actionLink.target = "_self";
 
   const supportMsg = encodeURIComponent(
-    `Здравствуйте! Хочу оплатить RfmAnalytics PRO (${state.planTitle}, ${state.price} ₽) для устройства ${rawDevice}.`
+    `Здравствуйте! Хочу оплатить RFM Analytics PRO (${state.planTitle}, ${state.price} ₽) для устройства ${rawDevice}.`
   );
   const supportLink = document.getElementById("checkoutSupportLink");
   if (supportLink) {
