@@ -437,12 +437,53 @@ a:hover {
   color: #fff;
 }
 
+.tariff-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.tariff-old-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
 .tariff-price {
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 4px;
   white-space: nowrap;
+}
+
+.tariff-price-row .tariff-price {
+  margin-bottom: 0;
+}
+
+.trial-banner {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #bbf7d0;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-sha {
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  word-break: break-all;
 }
 
 .tariff-meta {
