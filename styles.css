@@ -491,6 +491,13 @@ a:hover {
   color: var(--text-muted);
 }
 
+.pricing-note {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
 /* Inputs */
 .text-input {
   width: 100%;
